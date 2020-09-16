@@ -1,0 +1,74 @@
+<style>
+    * {
+        font-family: Verdana;
+        background: #f6f6ef;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .top-bar {
+        padding: 0.2rem;
+        margin: 0;
+        background: rgb(255, 102, 0);
+        font-weight: bold;
+        width: 100%%;
+    }
+    .questions-body {
+        display: flex;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    input {
+        
+        background: #fff;
+        width: 90%;
+        border-width: 1px;
+        max-width: 700px;
+    border-style: solid;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    appearance: textarea;
+    }
+    .question {
+        width: 90%;
+        max-width: 700px;
+        padding-top: 0.5rem;
+    }
+
+    form {
+        width: 90%;
+        max-width: 700px;
+    }
+</style>
+<div class="top-bar">
+<p class="top-bar">Ye combinator</p>
+</div>
+
+<div class="questions-body">
+<%= form_tag do %>
+
+    <% @questions.each do |question| %>
+        <div class="question">
+            <div>
+                <%= question.body %>
+            </div>
+            <div>
+                <input id="<%= question.id %>" name="<%= question.id %>" type="text" placeholder="Your answer here..." />
+            </div>
+        </div>
+    <% end %>
+    
+    <div class="question">
+        <div>
+            Your email
+        </div>
+        <div>
+            <input id="email" name="email" type="text" placeholder="Your email" />
+        </div>
+    </div>
+    <br/>
+    <button type="submit">submit</button>
+<% end %>
+</div>

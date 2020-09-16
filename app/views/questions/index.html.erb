@@ -1,0 +1,12 @@
+<p>Current questions</p>
+<% @questions.each do |question| %>
+    <div>
+        <%= question.body %>
+    </div>
+<% end %>
+
+<p>Add a question</p>
+<%= form_with model: @question, class: "nifty_form" do |f| %>
+  <%= f.text_field :body %>
+  <%= f.submit "Create" %>
+<% end %>
