@@ -4,7 +4,7 @@ class EntryController < ApplicationController
         questions = Question.all.to_a
         entry = Entry.create!(email: params[:email])
         questions.map { |question| Answer.create!(body: params[question.id.to_s], entry: entry, question: question) }
-        flash.now[:notice] = 'You applied successfully'
+        redirect_to "/success"
     end
 
     def show
@@ -12,7 +12,6 @@ class EntryController < ApplicationController
         entry = Entry.find(params[:id])
         @email = entry.email
         @answers = entry.answers.map{ |e| e.body }
-        return
     end
 
     def new
@@ -24,5 +23,9 @@ class EntryController < ApplicationController
             @count = Entry.all.count
             @entries = Entry.all
         end
+    end
+
+    def success
+
     end
 end
