@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: yecomb_production
-  username: yecomb
-  password: <%= ENV['YECOMB_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DB_URL'] %>
